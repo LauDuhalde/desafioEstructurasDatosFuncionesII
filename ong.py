@@ -9,15 +9,15 @@ def productoria(numeros):
     for numero in numeros:
         productoria*=int(numero)
     print(f"La productoria de {numeros} es {productoria}")
-
-def calcular(calculos):
-    listaProvisoria = calculos.lower().split("=")
-    for i in range(len(listaProvisoria)):
-        if("fact" in listaProvisoria[i]):
-            numFactorial=int(listaProvisoria[i+1].split(",")[0])
+   
+def calcular(**kwargs):
+    for key, value in kwargs.items():
+        if("fact" in key):
+            numFactorial=int(value)
             factorial(numFactorial)
-        if("prod" in listaProvisoria[i]):
-            numeros = listaProvisoria[i+1].split("]")[0].split("[")[1]
-            productoria(numeros.split(","))
+        if("prod" in key):
+            numeros = value
+            productoria(numeros)
+
     
-calcular("fact_1 = 5, prod_1 = [4,6,7,4,3], fact_2 = 6")
+calcular(fact_1 = 5, prod_1 = [4,6,7,4,3], fact_2 = 6)
